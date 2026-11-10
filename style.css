@@ -1,0 +1,139 @@
+/* Agustín Gutiérrez — personal website.
+   Colors and fonts follow the earlier Google Sites page:
+   Lato for text, Montserrat for the name and labels, green headings, orange links. */
+
+:root {
+  --text: #1c1c1c;
+  --muted: #555555;
+  --heading: #38761d;   /* green section headings */
+  --accent: #ff9900;    /* orange links */
+  --rule: #e2e2e2;
+  --header-bg: #f6f6f4;
+  --bg: #ffffff;
+  --width: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Lato, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; }
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--rule);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.site-name {
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+}
+.site-name:hover { text-decoration: none; }
+.site-nav a {
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  margin-left: 22px;
+}
+.site-nav a:first-child { margin-left: 0; }
+.site-nav a:hover { color: var(--heading); text-decoration: none; }
+
+/* ---------- Sections ---------- */
+main { padding-top: 36px; padding-bottom: 48px; }
+
+h1, h2 {
+  color: var(--heading);
+  font-family: Lato, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+section + section { margin-top: 44px; }
+
+/* ---------- About ---------- */
+.about {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+.photo {
+  width: 220px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.about-text p { margin: 0 0 10px; }
+.contact { margin-top: 18px !important; }
+.label {
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 15px;
+}
+
+/* ---------- Papers ---------- */
+.paper { margin: 0 0 26px; }
+.paper:last-child { margin-bottom: 0; }
+.paper h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 4px;
+}
+.paper p { margin: 0 0 4px; }
+.authors, .journal { color: var(--text); }
+.links a { margin-right: 16px; white-space: nowrap; }
+.links a::before { content: "["; color: var(--muted); }
+.links a::after { content: "]"; color: var(--muted); }
+.abstract {
+  margin-top: 8px !important;
+  font-size: 15.5px;
+  color: var(--muted);
+  text-align: justify;
+  hyphens: auto;
+}
+.abstract-label { font-weight: 700; font-style: italic; color: var(--text); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 14px;
+  padding: 18px 0 28px;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .about { flex-direction: column; gap: 20px; }
+  .photo { width: 180px; }
+  h1, h2 { font-size: 24px; }
+  .abstract { text-align: left; }
+}
