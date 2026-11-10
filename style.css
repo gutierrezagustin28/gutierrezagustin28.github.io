@@ -111,14 +111,31 @@ section + section { margin-top: 44px; }
 .links a { margin-right: 16px; white-space: nowrap; }
 .links a::before { content: "["; color: var(--muted); }
 .links a::after { content: "]"; color: var(--muted); }
-.abstract {
-  margin-top: 8px !important;
+/* Abstract: hidden until the reader clicks "Abstract". */
+.abstract { margin-top: 4px; }
+.abstract summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  color: var(--accent);
+  font-size: 15.5px;
+}
+.abstract summary::-webkit-details-marker { display: none; }
+.abstract summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1em;
+  transition: transform 0.15s ease;
+}
+.abstract[open] summary::before { transform: rotate(90deg); }
+.abstract summary:hover, .abstract summary:focus-visible { text-decoration: underline; }
+.abstract p {
+  margin: 6px 0 0 !important;
   font-size: 15.5px;
   color: var(--muted);
   text-align: justify;
   hyphens: auto;
 }
-.abstract-label { font-weight: 700; font-style: italic; color: var(--text); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -135,5 +152,5 @@ section + section { margin-top: 44px; }
   .about { flex-direction: column; gap: 20px; }
   .photo { width: 180px; }
   h1, h2 { font-size: 24px; }
-  .abstract { text-align: left; }
+  .abstract p { text-align: left; }
 }
