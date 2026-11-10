@@ -1,27 +1,26 @@
 /* Agustín Gutiérrez — personal website.
-   Colors and fonts follow the earlier Google Sites page:
-   Lato for text, Montserrat for the name and labels, green headings, orange links. */
+   Source Serif for text, Source Sans for the name, headings and links.
+   One accent color: the dark blue used in Agustin's papers ("ChadBlue"). */
 
 :root {
-  --text: #1c1c1c;
-  --muted: #555555;
-  --heading: #38761d;   /* green section headings */
-  --accent: #ff9900;    /* orange links */
-  --rule: #e2e2e2;
-  --header-bg: #f6f6f4;
+  --text: #222222;
+  --muted: #5f6368;
+  --accent: #1a1a80;      /* ChadBlue, rgb(.1,.1,.5) */
+  --rule: #dcdcdc;
   --bg: #ffffff;
-  --width: 880px;
+  --width: 760px;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Lato, Arial, sans-serif;
+  font-family: var(--serif);
   font-size: 17px;
   line-height: 1.6;
 }
@@ -29,128 +28,162 @@ body {
 .wrap {
   max-width: var(--width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 a { color: var(--accent); text-decoration: none; }
-a:hover, a:focus { text-decoration: underline; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 /* ---------- Header ---------- */
-.site-header {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--rule);
-}
+.site-header { border-bottom: 1px solid var(--rule); }
 .header-inner {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  gap: 6px 24px;
+  padding-top: 28px;
+  padding-bottom: 18px;
 }
 .site-name {
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 24px;
+  font-family: var(--sans);
+  font-size: 26px;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--text);
 }
 .site-name:hover { text-decoration: none; }
-.site-nav a {
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 15px;
-  color: var(--text);
-  margin-left: 22px;
-}
+.site-nav { font-family: var(--sans); font-size: 16px; }
+.site-nav a { color: var(--muted); margin-left: 24px; }
 .site-nav a:first-child { margin-left: 0; }
-.site-nav a:hover { color: var(--heading); text-decoration: none; }
+.site-nav a:hover { color: var(--accent); text-decoration: none; }
 
-/* ---------- Sections ---------- */
-main { padding-top: 36px; padding-bottom: 48px; }
+/* ---------- Layout ---------- */
+main.wrap { padding-top: 44px; padding-bottom: 56px; }
+section + section { margin-top: 48px; }
 
-h1, h2 {
-  color: var(--heading);
-  font-family: Lato, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.25;
-  margin: 0 0 16px;
+h2 {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
 }
-section + section { margin-top: 44px; }
 
 /* ---------- About ---------- */
 .about {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   align-items: flex-start;
 }
 .photo {
-  width: 220px;
+  width: 168px;
   height: auto;
   flex-shrink: 0;
-  border-radius: 4px;
+  border-radius: 6px;
 }
-.about-text p { margin: 0 0 10px; }
-.contact { margin-top: 18px !important; }
-.label {
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 15px;
+.intro { margin: 0 0 20px; font-size: 18px; }
+.contact {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 18px;
+  margin: 0;
+  font-size: 16px;
 }
+.contact dt {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.contact dd { margin: 0; }
 
 /* ---------- Papers ---------- */
-.paper { margin: 0 0 26px; }
+.paper { margin: 0 0 24px; }
 .paper:last-child { margin-bottom: 0; }
 .paper h3 {
-  font-size: 18px;
-  font-weight: 700;
+  font-family: var(--serif);
+  font-size: 17.5px;
+  font-weight: 600;
   line-height: 1.4;
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
-.paper p { margin: 0 0 4px; }
-.authors, .journal { color: var(--text); }
-.links a { margin-right: 16px; white-space: nowrap; }
-.links a::before { content: "["; color: var(--muted); }
-.links a::after { content: "]"; color: var(--muted); }
-/* Abstract: hidden until the reader clicks "Abstract". */
-.abstract { margin-top: 4px; }
-.abstract summary {
-  display: inline-block;
+.meta {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--muted);
+}
+.meta a { color: var(--muted); text-decoration: underline; text-decoration-color: #c4c4c4; text-underline-offset: 2px; }
+.meta a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+/* Links under a paper, on one line; "Abstract" is a toggle in the same row. */
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 18px;
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-size: 15px;
+}
+.paper-links details { display: inline-block; }
+.paper-links summary {
   cursor: pointer;
   list-style: none;
   color: var(--accent);
-  font-size: 15.5px;
 }
-.abstract summary::-webkit-details-marker { display: none; }
-.abstract summary::before {
+.paper-links summary::-webkit-details-marker { display: none; }
+.paper-links summary::before {
   content: "▸";
   display: inline-block;
-  width: 1em;
+  margin-right: 4px;
+  font-size: 0.85em;
   transition: transform 0.15s ease;
 }
-.abstract[open] summary::before { transform: rotate(90deg); }
-.abstract summary:hover, .abstract summary:focus-visible { text-decoration: underline; }
-.abstract p {
-  margin: 6px 0 0 !important;
+.paper-links details[open] summary::before { transform: rotate(90deg); }
+.paper-links summary:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* The abstract is shown only while its "Abstract" toggle is open. */
+.abstract {
+  display: none;
+  margin: 10px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--rule);
   font-size: 15.5px;
+  line-height: 1.6;
   color: var(--muted);
-  text-align: justify;
-  hyphens: auto;
 }
+.paper:has(.paper-links details[open]) .abstract { display: block; }
 
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--rule);
   color: var(--muted);
+  font-family: var(--sans);
   font-size: 14px;
-  padding: 18px 0 28px;
+  padding: 18px 0 32px;
 }
 
 /* ---------- Phones ---------- */
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   body { font-size: 16px; }
   .wrap { padding: 0 16px; }
+  .header-inner { padding-top: 20px; padding-bottom: 14px; }
+  .site-name { font-size: 22px; }
+  main.wrap { padding-top: 28px; }
   .about { flex-direction: column; gap: 20px; }
-  .photo { width: 180px; }
-  h1, h2 { font-size: 24px; }
-  .abstract p { text-align: left; }
+  .photo { width: 132px; }
+  .intro { font-size: 17px; }
 }
