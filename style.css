@@ -126,7 +126,7 @@ h2 {
   font-size: 15.5px;
   color: var(--muted);
 }
-.meta a { color: var(--muted); text-decoration: underline; text-decoration-color: #c4c4c4; text-underline-offset: 2px; }
+.meta a { white-space: nowrap; color: var(--muted); text-decoration: underline; text-decoration-color: #c4c4c4; text-underline-offset: 2px; }
 .meta a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 /* Links under a paper, on one line; "Abstract" is a toggle in the same row. */
@@ -181,11 +181,29 @@ h2 {
 /* ---------- Phones ---------- */
 @media (max-width: 600px) {
   body { font-size: 16px; }
-  .wrap { padding: 0 16px; }
-  .header-inner { padding-top: 20px; padding-bottom: 14px; }
+  .wrap { padding: 0 18px; }
+  .header-inner { padding-top: 20px; padding-bottom: 12px; }
   .site-name { font-size: 22px; }
-  main.wrap { padding-top: 28px; }
-  .about { flex-direction: column; gap: 20px; }
-  .photo { width: 132px; }
-  .intro { font-size: 17px; }
+  .site-nav a { display: inline-block; padding: 6px 0; margin-left: 20px; }
+  main.wrap { padding-top: 26px; }
+  section + section { margin-top: 40px; }
+
+  /* Small photo beside the intro; contact list underneath, full width. */
+  .about {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 18px 16px;
+    align-items: start;
+  }
+  .about-text { display: contents; }
+  .photo { width: 92px; border-radius: 5px; }
+  .intro { margin: 0; font-size: 16px; line-height: 1.55; }
+  .contact { grid-column: 1 / -1; font-size: 15.5px; gap: 6px 16px; }
+
+  /* Paper titles and links: comfortable to read and to tap. */
+  .paper { margin-bottom: 26px; }
+  .paper h3 { font-size: 17px; }
+  .paper-links { gap: 0 18px; margin-top: 2px; }
+  .paper-links a, .paper-links summary { display: inline-block; padding: 6px 0; }
+  .abstract { font-size: 15px; padding-left: 12px; }
 }
