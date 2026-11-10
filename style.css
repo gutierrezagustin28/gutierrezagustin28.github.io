@@ -8,7 +8,7 @@
   --accent: #1a1a80;      /* ChadBlue, rgb(.1,.1,.5) */
   --rule: #dcdcdc;
   --bg: #ffffff;
-  --width: 760px;
+  --width: 960px;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
 }
@@ -158,6 +158,7 @@ h2 {
 /* The abstract starts hidden (HTML "hidden" attribute); a short script in
    index.html shows it while the "Abstract" toggle is open. */
 .abstract {
+  max-width: 46em;          /* keep long abstracts at a readable line length */
   margin: 10px 0 0;
   padding-left: 14px;
   border-left: 2px solid var(--rule);
